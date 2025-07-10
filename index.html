@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa hàng Mail tự động</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🏪 Cửa hàng Mail</h1>
+        
+        <div class="stock-info">
+            <p>Mail có sẵn trong kho:</p>
+            <div class="stock-count" id="mailCount">...</div>
+        </div>
+        
+        <form id="purchaseForm">
+            <div class="form-group">
+                <label for="customer_code">Mã khách hàng</label>
+                <input type="text" id="customer_code" name="customer_code" placeholder="" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantity">Số lượng mail muốn mua:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+            </div>
+            
+            <div class="price-info">
+                💰 Giá: 2.300 VNĐ/mail<br>
+            </div>
+            
+            <button type="submit" class="btn">Mua ngay</button>
+        </form>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Lịch sử mua hàng</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Lịch sử mua hàng</h1>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalOrders">0</div>
+                <div class="stat-label">Tổng đơn hàng</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalMails">0</div>
+                <div class="stat-label">Tổng mail đã bán</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalRevenue">0</div>
+                <div class="stat-label">Tổng doanh thu (VNĐ)</div>
+            </div>
+        </div>
+        
+        <div id="purchaseList">
+            <!-- Purchase items will be inserted here dynamically -->
+        </div>
+        
+        <div class="no-data" id="noData">
+            Chưa có đơn hàng nào được thực hiện.
+        </div>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html> 
