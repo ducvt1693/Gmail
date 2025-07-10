@@ -1,55 +1,46 @@
-# Cửa hàng Mail tự động - GitHub Pages Version
+# Email Store System
 
-Đây là phiên bản GitHub Pages của hệ thống quản lý và bán mail tự động. Phiên bản này sử dụng HTML, CSS và JavaScript thuần, có thể triển khai dễ dàng trên GitHub Pages mà không cần server-side như phiên bản Flask gốc.
+This is an automatic email store system that manages emails stored in a text file. When customers make a purchase, emails are automatically removed from the available pool.
 
-## Tính năng
+## How It Works
 
-- Hiển thị số lượng mail có sẵn
-- Mua mail với mã khách hàng
-- Tải xuống file text chứa các mail đã mua
-- Trang admin hiển thị lịch sử mua hàng và thống kê
+1. **Storage**: Emails are stored in `emails.txt` file in the root directory
+2. **Purchase Process**: 
+   - Customers enter their code and desired quantity
+   - System checks if enough emails are available
+   - If valid, the system provides the emails and updates the list
+3. **Admin Management**:
+   - View purchase history and statistics
+   - Download current email list
+   - Add new emails to the system
 
-## Cài đặt
+## Important Notes for GitHub Pages
 
-1. Fork repository này
-2. Đăng nhập vào GitHub và đi đến repository đã fork
-3. Vào Settings > Pages
-4. Trong phần Source, chọn branch "main" và folder "/ (root)"
-5. Nhấn Save
-6. Đợi vài phút để GitHub Pages được triển khai
-7. Truy cập trang web tại địa chỉ: https://[username].github.io/[repository-name]
+Since GitHub Pages is a static hosting service, the system requires manual updates to the `emails.txt` file after purchases. After a purchase is made:
 
-## Sử dụng
+1. The system will generate an updated `emails.txt` file for download
+2. Admin must download this file and replace the existing one in the GitHub repository
+3. After committing the changes, the updated list will be available for future purchases
 
-### Trang chủ (index.html)
-- Hiển thị số lượng mail có sẵn
-- Nhập mã khách hàng và số lượng mail muốn mua
-- Nhấn "Mua ngay" để hoàn tất giao dịch
+## Features
 
-### Trang mua thành công (success.html)
-- Hiển thị thông tin mua hàng
-- Hiển thị danh sách mail đã mua
-- Nút tải xuống file txt chứa các mail
+- Email inventory management
+- Purchase tracking
+- Customer verification via codes
+- Admin dashboard with statistics
+- Easy email list update system
 
-### Trang Admin (admin.html)
-- Hiển thị thống kê về số đơn hàng, số mail đã bán và doanh thu
-- Hiển thị lịch sử các đơn hàng đã thực hiện
+## How to Add New Emails
 
-## Tùy chỉnh
+1. Go to the Admin page
+2. Click "Add email mới" button
+3. Enter emails (one per line) in the textarea
+4. Click "Lưu email" button
+5. Download the generated `emails.txt` file
+6. Replace the existing file in your GitHub repository
 
-### Thêm mã khách hàng
-Mở file `js/script.js` và thêm mã khách hàng mới vào mảng `validCustomerCodes`
+## Requirements
 
-### Thêm mail
-Mở file `js/script.js` và thêm các địa chỉ mail mới vào mảng `mails`
-
-## Lưu ý
-
-- Phiên bản GitHub Pages này sử dụng localStorage để lưu trữ dữ liệu mua hàng, nên dữ liệu chỉ được lưu trữ trên trình duyệt của người dùng.
-- Nếu người dùng xóa cache trình duyệt, dữ liệu sẽ bị mất.
-- Để sử dụng với dữ liệu thực tế, bạn cần tích hợp với một backend thực hoặc dịch vụ lưu trữ đám mây.
-
-## So sánh với phiên bản Flask
-- Phiên bản GitHub Pages chỉ sử dụng client-side JavaScript, không cần server
-- Dữ liệu được lưu trong localStorage thay vì file text/JSON trên server
-- Không cần chạy server Flask, dễ dàng triển khai thông qua GitHub Pages 
+- A web browser with JavaScript enabled
+- GitHub Pages for hosting
+- Manual updates to `emails.txt` after purchases 

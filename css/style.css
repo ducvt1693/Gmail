@@ -214,4 +214,52 @@ input[type="number"]:focus, input[type="text"]:focus {
     font-style: italic;
     padding: 40px;
     display: none;
+}
+
+/* Email management styles */
+.email-management {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 30px;
+}
+
+.email-management h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8em;
+}
+
+.email-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.email-actions .btn {
+    flex: 1;
+}
+
+.email-input-container {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+textarea:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+.admin-btn {
+    background: linear-gradient(45deg, #28a745, #218838);
+    margin-top: 20px;
 } 

@@ -1,33 +1,35 @@
-// Mail data array
-const mails = [
-  "longchau53845533@gmail.com",
-  "dongnam12778760@gmail.com",
-  "pnhu55065@gmail.com",
-  "legiang93424689@gmail.com",
-  "hongq6621@gmail.com",
-  "duongngan01224484@gmail.com",
-  "tot588192@gmail.com",
-  "longtu83762733@gmail.com",
-  "nguyennam59739578@gmail.com",
-  "hchi78411@gmail.com",
-  // Add more emails as needed
-];
+// Store for emails loaded from file
+let mails = [];
 
 // Customer codes
 const validCustomerCodes = ["telegramMail"];
 
-// Update mail count on load
-document.addEventListener('DOMContentLoaded', () => {
-  const mailCountElement = document.getElementById('mailCount');
-  mailCountElement.textContent = mails.length;
-  
-  // Set max quantity to available mail count
-  const quantityInput = document.getElementById('quantity');
-  quantityInput.max = mails.length;
+// Fetch emails from file on load
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch('emails.txt');
+    if (!response.ok) {
+      throw new Error('Failed to load emails file');
+    }
+    
+    const emailText = await response.text();
+    mails = emailText.split('\n').filter(email => email.trim() !== '');
+    
+    // Update mail count
+    const mailCountElement = document.getElementById('mailCount');
+    mailCountElement.textContent = mails.length;
+    
+    // Set max quantity to available mail count
+    const quantityInput = document.getElementById('quantity');
+    quantityInput.max = mails.length;
+  } catch (error) {
+    console.error('Error loading emails:', error);
+    alert('Không thể tải danh sách email. Vui lòng thử lại sau.');
+  }
 });
 
 // Handle form submission
-document.getElementById('purchaseForm').addEventListener('submit', (event) => {
+document.getElementById('purchaseForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   
   const customerCodeInput = document.getElementById('customer_code');
@@ -61,6 +63,11 @@ document.getElementById('purchaseForm').addEventListener('submit', (event) => {
   // Process purchase
   const purchasedMails = mails.slice(0, quantity);
   
+  // Update mails array (removing purchased emails)
+  mails = mails.slice(quantity);
+  
+  // Update emails.txt via GitHub API (will be implemented in admin panel)
+  
   // Save purchase to localStorage
   savePurchase(customerCode, quantity, purchasedMails);
   
@@ -68,7 +75,8 @@ document.getElementById('purchaseForm').addEventListener('submit', (event) => {
   const purchaseData = {
     customerCode: customerCode,
     quantity: quantity,
-    mails: purchasedMails
+    mails: purchasedMails,
+    remainingEmails: mails
   };
   
   localStorage.setItem('currentPurchase', JSON.stringify(purchaseData));
